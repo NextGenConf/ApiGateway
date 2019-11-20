@@ -1,5 +1,5 @@
-const { ApolloServer, gql } = require('apollo-server');
 const https = require('https');
+const { ApolloServer, gql } = require('apollo-server');
 const { RESTDataSource } = require('apollo-datasource-rest');
 
 class ConferencesApi extends RESTDataSource {
@@ -8,7 +8,7 @@ class ConferencesApi extends RESTDataSource {
     this.baseURL = 'http://localhost:3000/';
   }
 
-  async getConference(uniqueName) {
+  async getConference(uniqueName: string) {
     return this.get(`conferences/${uniqueName}`);
   }
 
@@ -52,7 +52,7 @@ const conferences = [
 // schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
   Query: {
-    conferences: (_source, { id }, { dataSources }) => {
+    conferences: (_source: any, _: any, { dataSources }: any) => {
       return dataSources.conferencesApi.getConferences();
     },
   },
@@ -71,6 +71,6 @@ const server = new ApolloServer({
 });
 
 // The `listen` method launches a web server.
-server.listen().then(({ url }) => {
+server.listen().then(({ url }: any) => {
   console.log(`Server ready at ${url}`);
 });

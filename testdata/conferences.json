@@ -2,11 +2,39 @@
   "conferences": [
     {
       "uniqueName": "test-conf-1",
-      "displayName": "Test Conference One"
+      "displayName": "Test Conference One",
+      "iconUri": "https://via.placeholder.com/150",
+      "description": "The best test conference",
+      "subtitle": "The original test conference",
+      "startDate": "2019-01-01 14:55:00Z",
+      "endDate": "2019-01-01 14:55:00Z",
+      "venue": {
+        "name": "Place",
+        "address": {
+          "addressLine": "1 Street",
+          "city": "NYC",
+          "country": "US",
+          "postalCode": "90210"
+        }
+      }
     },
     {
       "uniqueName": "test-conf-2",
-      "displayName": "Test Conference Two"
+      "displayName": "Test Conference Two",
+      "iconUri": "https://via.placeholder.com/150",
+      "description": "The real best test conference",
+      "subtitle": "Electric Boogaloo",
+      "startDate": "2019-01-02 14:55:00Z",
+      "endDate": "2019-01-02 14:55:00Z",
+      "venue": {
+        "name": "Place",
+        "address": {
+          "addressLine": "1 Street",
+          "city": "NYC",
+          "country": "US",
+          "postalCode": "90210"
+        }
+      }
     }
   ]
 }

@@ -1,9 +1,9 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 
 export class ConferencesApi extends RESTDataSource {
-  constructor() {
+  constructor(baseUrl: string) {
     super();
-    this.baseURL = 'http://localhost:3000/'; // TODO: Make configurable.
+    this.baseURL = baseUrl;
   }
 
   async getConference(uniqueName: string) {

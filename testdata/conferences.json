@@ -1,0 +1,12 @@
+{
+  "conferences": [
+    {
+      "uniqueName": "test-conf-1",
+      "displayName": "Test Conference One"
+    },
+    {
+      "uniqueName": "test-conf-2",
+      "displayName": "Test Conference Two"
+    }
+  ]
+}

@@ -28,6 +28,10 @@ const server = new ApolloServer({
   }
 });
 
+process.on('SIGINT', () => {
+    process.exit();
+});
+
 // The `listen` method launches a web server.
 server.listen().then(({ url }: any) => {
   console.log(`Server ready at ${url}`);

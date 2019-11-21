@@ -16,13 +16,14 @@ Then start the server using:
 npm start
 ```
 
-Currently the server is configured to get data from a conference service running at:
-```
-http://localhost:3000
+## Mock backend microservices
+
+
+From the root directory of this repo, run this command:
+
+```sh
+node testdata/test-server.js
 ```
 
-For testing, a JSON file is included that can be served using json-server:
-```
-npm install -g json-server
-json-server.cmd testdata\conferences.json --id uniqueName --port 5000
-```
+Mock Conference service runs at `localhost:5000`
+Mock Session service runs at `localhost:5001`

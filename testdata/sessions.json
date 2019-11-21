@@ -1,0 +1,22 @@
+{
+  "session": [
+    {
+      "uniqueName": "test-sesh-1",
+      "title": "Test Session One",
+      "description": "The best test session",
+      "subtitle": "The original test session",
+      "presenterId": "ghewitt",
+      "slideDeckUrl": "https://via.placeholder.com/150",
+      "location": "Room one"
+    },
+    {
+      "uniqueName": "test-sesh-2",
+      "title": "Test Session Two",
+      "description": "The real best test session",
+      "subtitle": "Electric Boogaloo",
+      "presenterId": "ghewitt",
+      "slideDeckUrl": "https://via.placeholder.com/150",
+      "location": "Room two"
+    }
+  ]
+}

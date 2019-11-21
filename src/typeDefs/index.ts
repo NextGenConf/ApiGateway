@@ -1,4 +1,5 @@
 import query from "./query";
-import types from "./types";
+import conference from "./conference";
+import session from "./session";
 
-export default [query, types];
+export default [query, conference, session];

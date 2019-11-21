@@ -24,5 +24,5 @@ http://localhost:3000
 For testing, a JSON file is included that can be served using json-server:
 ```
 npm install -g json-server
-json-server.cmd testdata\conferences.json --id uniqueName
+json-server.cmd testdata\conferences.json --id uniqueName --port 5000
 ```

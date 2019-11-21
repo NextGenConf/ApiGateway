@@ -1,12 +1,18 @@
 import { ApolloServer } from 'apollo-server';
-import { ConferencesApi } from './data';
+import { ConferencesApi, SessionsApi } from './data';
 import resolvers from './resolvers';
 import typeDefs from './typeDefs';
 
-let baseUrl = "http://localhost:3000";
+let conferencesBaseUrl = "http://localhost:5000";
 if (process.env.CONFERENCES_BASE_URL)
 {
-  baseUrl = process.env.CONFERENCES_BASE_URL;
+  conferencesBaseUrl = process.env.CONFERENCES_BASE_URL;
+}
+
+let sessionsBaseUrl = "http://localhost:5001";
+if (process.env.SESSIONS_BASE_URL)
+{
+  sessionsBaseUrl = process.env.SESSIONS_BASE_URL;
 }
 
 // The ApolloServer constructor requires two parameters: your schema
@@ -16,7 +22,8 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => {
     return {
-      conferencesApi: new ConferencesApi(baseUrl)
+      conferencesApi: new ConferencesApi(conferencesBaseUrl),
+      sessionsApi: new SessionsApi(sessionsBaseUrl)
     }
   }
 });

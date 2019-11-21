@@ -7,10 +7,10 @@ export class SessionsApi extends RESTDataSource {
   }
 
   async getSession(uniqueName: string) {
-    return this.get(`session/${uniqueName}`);
+    return this.get(`api/session/${uniqueName}`);
   }
 
   async getAllSessions() {
-    return this.get(`session`);
+    return this.get(`api/session`);
   }
 }

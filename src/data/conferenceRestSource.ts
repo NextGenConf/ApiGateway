@@ -7,10 +7,10 @@ export class ConferencesApi extends RESTDataSource {
   }
 
   async getConference(uniqueName: string) {
-    return this.get(`conference/${uniqueName}`);
+    return this.get(`api/conference/${uniqueName}`);
   }
 
   async getConferences() {
-    return this.get(`conference`);
+    return this.get(`api/conference`);
   }
 }

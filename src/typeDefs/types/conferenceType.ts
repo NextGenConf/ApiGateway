@@ -2,7 +2,7 @@ import { gql } from 'apollo-server';
 
 export default gql`
   type Address {
-    addresLine: String
+    addressLine: String
     city: String
     country: String
     postalCode: String

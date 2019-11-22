@@ -11,6 +11,6 @@ export class SessionsApi extends RESTDataSource {
   }
 
   async getAllSessions() {
-    return this.get(`api/session`);
+    return this.get(`api/session/`);
   }
 }

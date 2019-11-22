@@ -15,6 +15,8 @@ if (process.env.SESSIONS_BASE_URL)
   sessionsBaseUrl = process.env.SESSIONS_BASE_URL;
 }
 
+console.log(`Conference service: ${conferencesBaseUrl}`);
+console.log(`Session service: ${sessionsBaseUrl}`);
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 const server = new ApolloServer({

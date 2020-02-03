@@ -1,37 +1,68 @@
-import { ApolloServer } from 'apollo-server';
-import { ConferencesApi, SessionsApi } from './data';
-import resolvers from './resolvers';
-import typeDefs from './typeDefs';
+import { ApolloServer, UserInputError, gql } from "apollo-server";
+import Conference from "./models/conference";
+import {
+  getConferences,
+  getConference,
+  createConference
+} from "./fetchData/conference";
 
-let conferencesBaseUrl = "http://localhost:5000";
-if (process.env.CONFERENCES_BASE_URL)
-{
-  conferencesBaseUrl = process.env.CONFERENCES_BASE_URL;
-}
+const typeDefs = gql`
+  type Query {
+    conferences: [Conference]!
+    conference(uniqueName: String!): Conference!
+  }
 
-let sessionsBaseUrl = "http://localhost:5001";
-if (process.env.SESSIONS_BASE_URL)
-{
-  sessionsBaseUrl = process.env.SESSIONS_BASE_URL;
-}
+  type Mutation {
+    conference(input: NewConferenceInput): Conference!
+  }
+  type Conference {
+    uniqueName: String!
+    displayName: String!
+    description: String
+  }
 
-console.log(`Conference service: ${conferencesBaseUrl}`);
-console.log(`Session service: ${sessionsBaseUrl}`);
+  input NewConferenceInput {
+    uniqueName: String!
+    displayName: String!
+    description: String
+  }
+`;
+
+const mocks = {
+  Query: () => ({
+    conferences: async () => await getConferences(),
+    conference: async (_: any, args: { uniqueName: string }) => {
+      const conference = await getConference(args.uniqueName);
+      if (conference) {
+        return conference;
+      } else {
+        throw new UserInputError(
+          `Conference with uniqueName: ${args.uniqueName} does not exist`
+        );
+      }
+    }
+  }),
+  Mutation: () => ({
+    conference: async (_: any, { input }: any) => {
+      const newConference: Conference = {
+        uniqueName: input.uniqueName,
+        displayName: input.displayName,
+        description: input.description
+      };
+      return await createConference(newConference);
+    }
+  })
+};
+
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
-  dataSources: () => {
-    return {
-      conferencesApi: new ConferencesApi(conferencesBaseUrl),
-      sessionsApi: new SessionsApi(sessionsBaseUrl)
-    }
-  }
+  mocks
 });
 
-process.on('SIGINT', () => {
-    process.exit();
+process.on("SIGINT", () => {
+  process.exit();
 });
 
 // The `listen` method launches a web server.

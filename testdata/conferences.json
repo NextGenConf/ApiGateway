@@ -17,6 +17,11 @@
     {
         "uniqueName": "test-conf-4",
         "displayName": "Test Conference 4",
-        "description": "yo wassup"
+        "description": "something even more interesting"
+    },
+    {
+        "uniqueName": "test-conf-5",
+        "displayName": "Test Conference 5",
+        "description": "something fairly interesting"
     }
 ]

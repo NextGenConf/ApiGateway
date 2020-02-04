@@ -49,4 +49,32 @@ const createConference = async (
   }
 };
 
-export { getConferences, getConference, createConference };
+const updateConference = async (
+  conference: Partial<Conference>
+): Promise<Conference> => {
+  const data = await readFile(
+    path.resolve(root, "testdata", "conferences.json")
+  );
+  console.log(conference);
+  const conferences: Conference[] = JSON.parse(data.toString());
+  const conferenceIndex = conferences.findIndex(
+    conf => conf.uniqueName === conference.uniqueName
+  );
+  if (conferenceIndex === -1) {
+    throw new Error(
+      `Could not find conference with uniqueName: ${conference.uniqueName}`
+    );
+  } else {
+    conferences[conferenceIndex] = {
+      ...conferences[conferenceIndex],
+      ...conference
+    };
+    await writeFile(
+      path.resolve(root, "testdata", "conferences.json"),
+      JSON.stringify(conferences, null, 4)
+    );
+    return conferences[conferenceIndex];
+  }
+};
+
+export { getConferences, getConference, createConference, updateConference };

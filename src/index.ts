@@ -3,7 +3,8 @@ import Conference from "./models/conference";
 import {
   getConferences,
   getConference,
-  createConference
+  createConference,
+  updateConference
 } from "./fetchData/conference";
 
 const typeDefs = gql`
@@ -13,7 +14,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    conference(input: NewConferenceInput): Conference!
+    newConference(input: NewConferenceInput): Conference!
+    updateConference(input: UpdateConferenceInput): Conference!
   }
   type Conference {
     uniqueName: String!
@@ -26,10 +28,16 @@ const typeDefs = gql`
     displayName: String!
     description: String
   }
+
+  input UpdateConferenceInput {
+    uniqueName: String!
+    displayName: String
+    description: String
+  }
 `;
 
-const mocks = {
-  Query: () => ({
+const devResolvers = {
+  Query: {
     conferences: async () => await getConferences(),
     conference: async (_: any, args: { uniqueName: string }) => {
       const conference = await getConference(args.uniqueName);
@@ -41,24 +49,27 @@ const mocks = {
         );
       }
     }
-  }),
-  Mutation: () => ({
-    conference: async (_: any, { input }: any) => {
+  },
+  Mutation: {
+    newConference: async (_: any, { input }: any) => {
       const newConference: Conference = {
         uniqueName: input.uniqueName,
         displayName: input.displayName,
         description: input.description
       };
       return await createConference(newConference);
+    },
+    updateConference: async (_: any, args: { input: Partial<Conference> }) => {
+      return await updateConference(args.input);
     }
-  })
+  }
 };
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 const server = new ApolloServer({
   typeDefs,
-  mocks
+  resolvers: devResolvers
 });
 
 process.on("SIGINT", () => {

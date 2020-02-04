@@ -11,11 +11,12 @@
     },
     {
         "uniqueName": "test-conf-3",
-        "displayName": "Test Conference 3",
-        "description": "hey ya!"
+        "displayName": "Test DisplayName",
+        "description": "something interesting"
     },
     {
         "uniqueName": "test-conf-4",
-        "displayName": "Test Conference 4"
+        "displayName": "Test Conference 4",
+        "description": "yo wassup"
     }
 ]

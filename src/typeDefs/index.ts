@@ -1,5 +1,3 @@
-import query from "./query";
-import conference from "./conference";
-import session from "./session";
+import root from "./root";
 
-export default [query, conference, session];
+export { root };

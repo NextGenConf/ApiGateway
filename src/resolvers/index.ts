@@ -1,4 +1,3 @@
-import conferenceResolvers from './conferenceResolvers';
-import sessionResolvers from './sessionResolvers';
+import { root } from "./root";
 
-export default [conferenceResolvers, sessionResolvers];
+export { root };

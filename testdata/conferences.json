@@ -1,40 +1,27 @@
-{
-  "conference": [
+[
     {
-      "uniqueName": "test-conf-1",
-      "displayName": "Test Conference One",
-      "iconUri": "https://via.placeholder.com/150",
-      "description": "The best test conference",
-      "subtitle": "The original test conference",
-      "startDate": "2019-01-01 14:55:00Z",
-      "endDate": "2019-01-01 14:55:00Z",
-      "venue": {
-        "name": "Place",
-        "address": {
-          "addressLine": "1 Street",
-          "city": "NYC",
-          "country": "US",
-          "postalCode": "90210"
-        }
-      }
+        "uniqueName": "test-conf-1",
+        "displayName": "Test Conference One",
+        "description": "The best test conference"
     },
     {
-      "uniqueName": "test-conf-2",
-      "displayName": "Test Conference Two",
-      "iconUri": "https://via.placeholder.com/150",
-      "description": "The real best test conference",
-      "subtitle": "Electric Boogaloo",
-      "startDate": "2019-01-02 14:55:00Z",
-      "endDate": "2019-01-02 14:55:00Z",
-      "venue": {
-        "name": "Place",
-        "address": {
-          "addressLine": "1 Street",
-          "city": "NYC",
-          "country": "US",
-          "postalCode": "90210"
-        }
-      }
+        "uniqueName": "test-conf-2",
+        "displayName": "Test Conference Two",
+        "description": "The real best test conference"
+    },
+    {
+        "uniqueName": "test-conf-3",
+        "displayName": "Test DisplayName",
+        "description": "something interesting"
+    },
+    {
+        "uniqueName": "test-conf-4",
+        "displayName": "Test Conference 4",
+        "description": "something even more interesting"
+    },
+    {
+        "uniqueName": "test-conf-5",
+        "displayName": "Test Conference 5",
+        "description": "something fairly interesting"
     }
-  ]
-}
+]
